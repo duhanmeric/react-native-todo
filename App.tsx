@@ -1,11 +1,19 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
-import { NativeBaseProvider, Box } from "native-base";
+import { NativeBaseProvider, Box, Center } from "native-base";
+import SearchField from "./components/SearchField";
+import { SafeAreaView } from "react-native-safe-area-context";
+import FloatingButton from "./components/FloatingButton";
+import Todos from "./components/Todo/Todos";
 
 export default function App() {
   return (
     <NativeBaseProvider>
-      <Box>Hello world</Box>
+      <Center flex={1} pt={60} justifyContent="flex-start">
+        <SearchField />
+        <Todos />
+        <FloatingButton />
+      </Center>
       <StatusBar style="auto" />
     </NativeBaseProvider>
   );
