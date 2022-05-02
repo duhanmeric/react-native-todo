@@ -15,23 +15,19 @@ type Props = {
   item: {
     id: string;
     title: string;
-    timeStamp: string;
+    timeStamp: string | Date;
     completed: boolean;
   };
-  changeItem: (id: string) => void;
+  changeItem: (etype: string, id: string) => void;
 };
 
 const SingleTodo: FC<Props> = ({ item, changeItem }) => {
-  useEffect(() => {
-    console.log(item);
-  }, [item]);
-
   return (
     <Box bg="#dfdfdf" my={2} p={5} borderRadius="10">
       <HStack alignItems="center" justifyContent="space-between">
         <Box flex={1} flexDir="row" alignItems="center" maxW="85%">
           <Checkbox
-            onChange={() => changeItem(item.id)}
+            onChange={() => changeItem("completed", item.id)}
             isChecked={item.completed}
             value=""
             accessibilityLabel="todo"
@@ -46,6 +42,7 @@ const SingleTodo: FC<Props> = ({ item, changeItem }) => {
           </Text>
         </Box>
         <IconButton
+          onPress={() => changeItem("delete", item.id)}
           size={10}
           variant="outlined"
           _icon={{
