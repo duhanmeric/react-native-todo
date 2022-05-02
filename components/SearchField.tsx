@@ -2,14 +2,17 @@ import React from "react";
 import { Box, Heading, Icon, Input, Text, VStack } from "native-base";
 import { MaterialIcons } from "@expo/vector-icons";
 
-type Props = {};
+type Props = {
+  inputHandler: (value: any) => void;
+};
 
-const SearchField = (props: Props) => {
+const SearchField = ({ inputHandler }: Props) => {
   return (
     <Box px={8}>
       <VStack w="100%" space={5} alignSelf="center">
         <Input
-          placeholder="Görev ara"
+          onChangeText={(val) => inputHandler(val)}
+          placeholder="Search task"
           width="100%"
           borderRadius="4"
           py="3"

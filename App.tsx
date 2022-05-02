@@ -14,6 +14,7 @@ type Props = {
 }[];
 
 export default function App() {
+  const [searchInput, setSearchInput] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [todos, setTodos] = useState<Props>([
     {
@@ -62,7 +63,11 @@ export default function App() {
         title,
       },
     ]);
-    console.log(title);
+  };
+
+  let inputHandler = (e: any) => {
+    var lowerCase = e.toLowerCase();
+    setSearchInput(lowerCase);
   };
 
   const changeItem = (type: string, id: string) => {
@@ -89,8 +94,12 @@ export default function App() {
   return (
     <NativeBaseProvider>
       <Center flex={1} pt={60} justifyContent="flex-start">
-        <SearchField />
-        <Todos todos={todos} changeItem={changeItem} />
+        <SearchField inputHandler={inputHandler} />
+        <Todos
+          todos={todos}
+          changeItem={changeItem}
+          searchInput={searchInput}
+        />
         <AddTodo
           receiveNewTodo={receiveNewTodo}
           showModal={showModal}

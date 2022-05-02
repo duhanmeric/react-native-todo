@@ -1,4 +1,4 @@
-import { Box, Button, FormControl, Input, Modal, Text } from "native-base";
+import { Button, FormControl, Input, Modal, Text } from "native-base";
 import React from "react";
 import { useState } from "react";
 
@@ -22,8 +22,10 @@ const AddTodo = ({ showModal, handleModal, receiveNewTodo }: Props) => {
         </Modal.Header>
         <Modal.Body>
           <FormControl mb={3}>
-            <FormControl.Label>Title</FormControl.Label>
-            <Input onChangeText={(val) => setInput(val)} />
+            <FormControl.Label>
+              <Text fontSize={18}>Title</Text>
+            </FormControl.Label>
+            <Input fontSize={18} onChangeText={(val) => setInput(val)} />
           </FormControl>
         </Modal.Body>
         <Modal.Footer>

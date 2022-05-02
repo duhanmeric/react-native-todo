@@ -10,16 +10,20 @@ type Props = {
     completed: boolean;
   }[];
   changeItem: (type: string, id: string) => void;
+  searchInput: string;
 };
 
-const Todos = ({ todos, changeItem }: Props) => {
-  console.log(todos);
+const Todos = ({ todos, changeItem, searchInput }: Props) => {
+  const filteredData = todos.filter((todo) => {
+    if (searchInput === "") return todo;
+    return todo.title.toLowerCase().includes(searchInput);
+  });
 
   return (
-    <Box flex={1} w="100%" px={8} my={5}>
+    <Box flex={1} w="100%" px={8} my={2}>
       <FlatList
         keyExtractor={(item) => item.id}
-        data={todos}
+        data={filteredData}
         renderItem={({ item }) => (
           <SingleTodo changeItem={changeItem} item={item} />
         )}
