@@ -10,9 +10,9 @@ const FloatingButton = ({ handleModal }: Props) => {
   return (
     <Fab
       onPress={() => handleModal(true)}
-      mb={8}
+      mb={16}
       mr={2}
-      icon={<Icon size="2xl" color="white" as={<MaterialIcons name="add" />} />}
+      icon={<Icon size="xl" color="white" as={<MaterialIcons name="add" />} />}
     ></Fab>
   );
 };

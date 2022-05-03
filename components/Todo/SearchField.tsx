@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Heading, Icon, Input, Text, VStack } from "native-base";
+import { Box, Icon, Input, VStack } from "native-base";
 import { MaterialIcons } from "@expo/vector-icons";
 
 type Props = {
@@ -25,15 +25,6 @@ const SearchField = ({ inputHandler }: Props) => {
               size="6"
               color="gray.400"
               as={<MaterialIcons name="search" />}
-            />
-          }
-          InputRightElement={
-            <Icon
-              m="2"
-              mr="3"
-              size="6"
-              color="gray.400"
-              as={<MaterialIcons name="mic" />}
             />
           }
         />
